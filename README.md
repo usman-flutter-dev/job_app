@@ -5,6 +5,16 @@ A modern job listing and management application built using Flutter, following t
 
 ---
 
+## 🖼️ Screenshots
+
+Get a quick look at the main screens designed for the application.
+
+| Register Screen | Login Screen | Job Listing Screen | Add New Job Screen | Edit Job Screen |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Register Screen](assets/images/RegisterScreen.png) | ![Login Screen](assets/images/LoginScreen.png) | ![Job Listing Screen](assets/images/JobListing.png) | ![Add Job Screen](assets/images/AdPosting.png) | ![Edit Job Screen](assets/images/AdPosting-1.png) |
+
+---
+
 ## 🙏 Acknowledgment
 
 **A big thank you to Sir Ishaq Hassan for the invaluable mentorship and guidance** throughout the development and learning of Flutter concepts, which made the creation of this helpful, architecturally sound application possible.

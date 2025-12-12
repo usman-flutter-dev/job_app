@@ -5,6 +5,9 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Controller
+    // final AuthAllBindings registerController = Get.find<AuthAllBindings>();
+
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       // SafeArea ensures content doesn't overlap status bars, etc.
@@ -47,10 +50,10 @@ class RegisterScreen extends StatelessWidget {
                 suffixIcon: Icon(Icons.remove_red_eye),
               ),
 
-              SizedBox(
-                height: AppResponsive.hp(context, 0.15),
-              ), // Space before the "Sign In" link
-              // --- Already have an account? ---
+              SizedBox(height: AppResponsive.hp(context, 0.15)),
+
+              /// Try Spacer instead of SizedBox
+              // Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

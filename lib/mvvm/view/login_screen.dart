@@ -5,6 +5,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Controller
+    // final AuthAllBindings loginController = Get.find<AuthAllBindings>();
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       body: SafeArea(
@@ -44,6 +46,11 @@ class LoginScreen extends StatelessWidget {
               ),
 
               SizedBox(height: AppResponsive.hp(context, 0.25)),
+
+              /// Try Spacer instead of SizedBox
+              // Spacer(),
+              //
+
               // Don't have an account?
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

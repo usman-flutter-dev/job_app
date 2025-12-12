@@ -99,6 +99,9 @@ class AddJobScreen extends StatelessWidget {
               ),
               const SizedBox(height: 96),
 
+              /// Try Spacer instead of SizedBox
+              // Spacer(),
+
               // --- 4. Submit Button ---
               // Placed at the very bottom of the Column
               Padding(

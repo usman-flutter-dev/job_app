@@ -8,21 +8,21 @@ class AppPages {
     GetPage(
       name: AppRoutes.registerScreen,
       page: () => const RegisterScreen(),
-      binding: AuthBinding(),
+      binding: AuthAllBindings(),
     ),
 
     // Login Screen
     GetPage(
       name: AppRoutes.loginScreen,
       page: () => const LoginScreen(),
-      binding: AuthBinding(),
+      binding: AuthAllBindings(),
     ),
 
     // Jobs Listing Screen
     GetPage(
       name: AppRoutes.jobsList,
       page: () => const JobListingScreen(),
-      binding: AuthBinding(),
+      binding: AuthAllBindings(),
       // transition: Transition.rightToLeft,
     ),
 
@@ -30,7 +30,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.addJob,
       page: () => const AddJobScreen(),
-      binding: AuthBinding(),
+      binding: AuthAllBindings(),
       // transition: Transition.upToDown,
     ),
 

@@ -5,10 +5,12 @@ class AppTextField extends StatelessWidget {
   final bool obscureText;
   final TextAlignVertical? textAlignVertical;
   final Icon? suffixIcon;
+  final TextEditingController? controller;
 
   const AppTextField({
     super.key,
     required this.hintText,
+    this.controller,
     this.suffixIcon,
     this.textAlignVertical,
     this.obscureText = false, // Defaults to false
@@ -24,6 +26,7 @@ class AppTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: TextField(
+        controller: controller,
         obscureText: obscureText,
         style: GoogleFonts.poppins(color: AppColors.white, fontSize: 16),
         decoration: InputDecoration(

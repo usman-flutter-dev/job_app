@@ -1,13 +1,12 @@
 import 'package:job_app/app_imports.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+  RegisterScreen({super.key});
+  // Controller
+  final RegisterController registerController = Get.find<RegisterController>();
 
   @override
   Widget build(BuildContext context) {
-    // Controller
-    // final AuthAllBindings registerController = Get.find<AuthAllBindings>();
-
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       // SafeArea ensures content doesn't overlap status bars, etc.
@@ -38,12 +37,19 @@ class RegisterScreen extends StatelessWidget {
               ),
               SizedBox(height: AppResponsive.hp(context, 0.06)),
               // --- Text Fields ---
-              AppTextField(hintText: "Enter your full name"),
+              AppTextField(
+                controller: registerController.fullNameController,
+                hintText: "Enter your full name",
+              ),
               SizedBox(height: AppResponsive.hp(context, 0.02)),
-              AppTextField(hintText: "Enter your email address"),
+              AppTextField(
+                controller: registerController.emailController,
+                hintText: "Enter your email address",
+              ),
               SizedBox(height: AppResponsive.hp(context, 0.02)),
               // Password field is hidden
               AppTextField(
+                controller: registerController.passwordController,
                 textAlignVertical: TextAlignVertical(y: 0.05),
                 hintText: "Enter your password",
                 obscureText: true,
@@ -88,16 +94,8 @@ class RegisterScreen extends StatelessWidget {
               AppButton(
                 text: "Sign Up",
                 onPressed: () {
-                  // Action for Sign Up
-                  Get.snackbar(
-                    "Sign Up",
-                    "Do Validation as Required!",
-                    colorText: AppColors.white,
-                    duration: Duration(seconds: 5),
-                    isDismissible: true,
-                    dismissDirection: DismissDirection.horizontal,
-                    forwardAnimationCurve: Curves.easeInOut,
-                  );
+                  print("Sign Up");
+                  registerController.register();
                 },
               ),
             ],

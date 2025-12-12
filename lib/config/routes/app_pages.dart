@@ -1,4 +1,6 @@
 import 'package:job_app/app_imports.dart';
+import 'package:job_app/mvvm/viewModel/login_bindings.dart';
+import 'package:job_app/mvvm/viewModel/register_bindings.dart';
 
 class AppPages {
   static const initial = AppRoutes.registerScreen;
@@ -7,22 +9,22 @@ class AppPages {
     // Register Screen
     GetPage(
       name: AppRoutes.registerScreen,
-      page: () => const RegisterScreen(),
-      binding: AuthAllBindings(),
+      page: () => RegisterScreen(),
+      binding: RegisterBindings(),
     ),
 
     // Login Screen
     GetPage(
       name: AppRoutes.loginScreen,
-      page: () => const LoginScreen(),
-      binding: AuthAllBindings(),
+      page: () => LoginScreen(),
+      binding: LoginBindings(),
     ),
 
     // Jobs Listing Screen
     GetPage(
       name: AppRoutes.jobsList,
       page: () => const JobListingScreen(),
-      binding: AuthAllBindings(),
+      // binding: AuthAllBindings(),
       // transition: Transition.rightToLeft,
     ),
 
@@ -30,7 +32,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.addJob,
       page: () => const AddJobScreen(),
-      binding: AuthAllBindings(),
+      // binding: AuthAllBindings(),
       // transition: Transition.upToDown,
     ),
 

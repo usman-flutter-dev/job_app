@@ -1,12 +1,13 @@
 import 'package:job_app/app_imports.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+
+  // Controller
+  final loginController = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
-    // Controller
-    // final AuthAllBindings loginController = Get.find<AuthAllBindings>();
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
       body: SafeArea(
@@ -35,10 +36,14 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: AppResponsive.hp(context, 0.06)),
               // --- Text Fields ---
-              AppTextField(hintText: "Enter your email address"),
+              AppTextField(
+                controller: loginController.emailController,
+                hintText: "Enter your email address",
+              ),
               SizedBox(height: AppResponsive.hp(context, 0.02)),
               // Password field is hidden
               AppTextField(
+                controller: loginController.passwordController,
                 textAlignVertical: TextAlignVertical(y: 0.05),
                 hintText: "Enter your password",
                 obscureText: true,
@@ -86,16 +91,7 @@ class LoginScreen extends StatelessWidget {
               AppButton(
                 text: "Sign In",
                 onPressed: () {
-                  // Action for Sign Up
-                  Get.snackbar(
-                    "Sign In",
-                    "Do Validation as Required!",
-                    colorText: AppColors.white,
-                    duration: Duration(seconds: 5),
-                    isDismissible: true,
-                    dismissDirection: DismissDirection.horizontal,
-                    forwardAnimationCurve: Curves.easeInOut,
-                  );
+                  loginController.loginUser();
                 },
               ),
             ],

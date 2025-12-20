@@ -33,11 +33,11 @@ class LoginController extends GetxController {
       );
       return;
     }
-    // Password Length must not be less than 8 Characters
-    if (password.length < 8) {
+    // Password Length must not be less than 6 Characters
+    if (password.length < 6) {
       Get.snackbar(
         'Password',
-        'Password should be at least 8 characters!',
+        'Password should be at least 6 characters!',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: AppColors.red,
         colorText: AppColors.white,

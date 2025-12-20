@@ -19,24 +19,27 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        // Use the centralized color constant
-        color: AppColors.textFieldBackground,
-        borderRadius: BorderRadius.circular(12),
+        color: const Color(0xFF1E1C24),
+        border: Border.all(color: const Color(0xff5D5D67), width: 1),
+        borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(
         controller: controller,
         obscureText: obscureText,
-        style: GoogleFonts.poppins(color: AppColors.white, fontSize: 16),
+        maxLines: null,
+        // scrollPhysics: NeverScrollableScrollPhysics(),
+        style: GoogleFonts.poppins(color: AppColors.white, fontSize: 15),
         decoration: InputDecoration(
           hintText: hintText,
           // Hint text color - slightly faded white
           hintStyle: GoogleFonts.poppins(
-            color: AppColors.white.withOpacity(0.6),
+            color: Color(0xFF8F8F9E),
+            fontSize: 15,
           ),
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(vertical: 12),
+          // contentPadding: const EdgeInsets.symmetric(vertical: 12),
 
           // No suffix icon implementation, keeping it simple as requested
           suffixIcon: suffixIcon,

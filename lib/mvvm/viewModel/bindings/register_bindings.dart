@@ -1,5 +1,5 @@
 import 'package:get/instance_manager.dart';
-import 'package:job_app/mvvm/viewModel/register_controller.dart';
+import 'package:job_app/mvvm/viewModel/controllers/register_controller.dart';
 
 class RegisterBindings implements Bindings {
   @override

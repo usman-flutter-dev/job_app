@@ -4,6 +4,7 @@ class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
   // Controller
   final RegisterController registerController = Get.find<RegisterController>();
+  final AuthController authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -94,8 +95,8 @@ class RegisterScreen extends StatelessWidget {
               AppButton(
                 text: "Sign Up",
                 onPressed: () {
-                  print("Sign Up");
                   registerController.register();
+                  authController.onInit();
                 },
               ),
             ],

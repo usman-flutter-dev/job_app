@@ -30,7 +30,7 @@ class RegisterController extends GetxController {
     // All Fields must not be Empty
     if (email.isEmpty || password.isEmpty || fullName.isEmpty) {
       Get.snackbar(
-        'Field Empty',
+        'Empty Field',
         'All fields are required!',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: AppColors.red,
@@ -41,7 +41,7 @@ class RegisterController extends GetxController {
       );
       return;
     }
-    // Password Length must not be less than 8 Characters
+    // Password Length must not be less than 6 Characters
     if (password.length < 6) {
       Get.snackbar(
         'Password',
@@ -90,9 +90,9 @@ class RegisterController extends GetxController {
       );
 
       //
-      Get.offAllNamed(AppRoutes.loginScreen);
+      Get.offAllNamed(AppRoutes.jobsList);
     } on FirebaseAuthException catch (e) {
-      RxString errorMessage = " ".obs;
+      RxString errorMessage = "".obs;
 
       switch (e.code) {
         case 'weak-password':

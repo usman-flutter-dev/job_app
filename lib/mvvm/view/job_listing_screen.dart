@@ -1,7 +1,10 @@
 import 'package:job_app/app_imports.dart';
+import 'package:job_app/mvvm/viewModel/controllers/job_controller.dart';
 
 class JobListingScreen extends StatelessWidget {
-  const JobListingScreen({super.key});
+  JobListingScreen({super.key});
+
+  final JobController jobController = Get.find<JobController>();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,7 @@ class JobListingScreen extends StatelessWidget {
                       // Replace with GetX controller logout logic
                     },
                     icon: const Icon(
-                      Icons.arrow_back_ios_rounded,
+                      Icons.logout,
                       color: AppColors.white,
                       size: 28,
                     ),
@@ -89,69 +92,99 @@ class JobListingScreen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: ListView.builder(
-                  padding: EdgeInsets.zero,
-                  itemCount: 7, // Provide Actual Length Here
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 12),
-                      child: Container(
-                        // height: 90,
-                        decoration: BoxDecoration(
-                          color: AppColors.textFieldBackground,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Flutter Developer Required",
-                                    style: GoogleFonts.poppins(
-                                      color: AppColors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(height: 4),
-                                  Text(
-                                    "Karachi, Pakistan",
-                                    style: GoogleFonts.poppins(
-                                      color: Colors.white70,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  // Edit Icon
-                                  Icon(
-                                    Icons.edit,
-                                    color: AppColors.white,
-                                    size: 20,
-                                  ),
-                                  SizedBox(width: 4),
-                                  // Delete Icon
-                                  Icon(
-                                    Icons.delete,
-                                    color: AppColors.red,
-                                    size: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                child: Obx(() {
+                  // 01
+                  final jobs = jobController.jobList;
+                  // 02
+                  if (jobs.isEmpty) {
+                    return Center(
+                      child: Text(
+                        "No jobs posted yet. Add one!",
+                        style: GoogleFonts.poppins(
+                          color: AppColors.white,
+                          fontSize: 16,
                         ),
                       ),
                     );
-                  },
-                ),
+                  }
+                  // 03
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    // Provide Actual Length Here
+                    itemCount: jobs.length,
+                    itemBuilder: (context, index) {
+                      // Get the job model
+                      final job = jobs[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Container(
+                          // height: 90,
+                          decoration: BoxDecoration(
+                            color: AppColors.textFieldBackground,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        job.positionName,
+
+                                        style: GoogleFonts.poppins(
+                                          color: AppColors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(height: 4),
+                                      Text(
+                                        job.description,
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white70,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    // Edit Icon
+                                    Icon(
+                                      Icons.edit,
+                                      color: AppColors.white,
+                                      size: 20,
+                                    ),
+                                    SizedBox(width: 4),
+                                    // Delete Icon
+                                    GestureDetector(
+                                      onTap: () {
+                                        jobController.deleteJob(job.id);
+                                      },
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: AppColors.red,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }),
+                //
               ),
             ),
           ],
